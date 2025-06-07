@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <>
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <main className="pt-16">
+      <main className="pt-4 sm:pt-16">
         <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         <About isDarkMode={isDarkMode} />
         <Services isDarkMode={isDarkMode} />
@@ -61,16 +61,36 @@ export default function Home() {
 
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black text-white shadow-lg hover:bg-gray-800 hover:scale-110 transform transition-all duration-300 z-50 flex items-center justify-center cursor-pointer
-        ${
-          showTopBtn
-            ? "opacity-100 scale-100 pointer-events-auto"
-            : "opacity-0 scale-90 pointer-events-none"
-        }
-      `}
+        className={`
+          fixed bottom-6 right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full
+          text-white shadow-lg transform transition-all duration-300 z-50 flex items-center justify-center cursor-pointer
+          ${
+            showTopBtn
+              ? "opacity-100 scale-100 pointer-events-auto"
+              : "opacity-0 scale-90 pointer-events-none"
+          }
+          ${
+            isDarkMode
+              ? "bg-gray-700 hover:bg-gray-600"
+              : "bg-black hover:bg-gray-800"
+          }
+        `}
         aria-label="Back to top"
       >
-        ↑
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 sm:h-7 sm:w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M5 15l7-7 7 7"
+          />
+        </svg>
       </button>
     </>
   );
