@@ -27,24 +27,31 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Header />
-      <About />
-      <Services />
-      <Work />
-      <Contact />
-      <Footer />
+      <main className="pt-16">
+        <Header />
+        <About />
+        <Services />
+        <Work />
+        <Contact />
+        <Footer />+{" "}
+      </main>
 
-      {showTopBtn && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black text-white shadow-lg 
-               hover:bg-gray-800 hover:scale-110 transform transition duration-300 
-               z-50 flex items-center justify-center cursor-pointer"
-          aria-label="Back to top"
-        >
-          ↑
-        </button>
-      )}
+      <button
+        onClick={scrollToTop}
+        className={`
+          fixed bottom-6 right-6 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black text-white shadow-lg 
+          hover:bg-gray-800 hover:scale-110 transform transition-all duration-300 
+          z-50 flex items-center justify-center cursor-pointer
+          ${
+            showTopBtn
+              ? "opacity-100 scale-100 pointer-events-auto"
+              : "opacity-0 scale-90 pointer-events-none"
+          }
+        `}
+        aria-label="Back to top"
+      >
+        ↑
+      </button>
     </>
   );
 }
