@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Ovo&display=swap');
-@import "tailwindcss";
 
-@theme {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
   --font-outfit: 'Outfit', sans-serif;
   --font-ovo: 'Ovo', serif;
   --color-light-hover: #fcf4ff;
@@ -10,5 +13,5 @@
 }
 
 * {
-  font-family: outfit;
+  font-family: var(--font-outfit);
 }
