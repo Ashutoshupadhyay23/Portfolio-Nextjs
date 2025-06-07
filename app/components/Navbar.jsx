@@ -37,12 +37,12 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
       <nav
         className={`w-full fixed top-0 left-0 h-16 px-5 lg:px-8 xl:px-[8%] flex items-center justify-between z-50
           transition-colors duration-500 ease-in-out
-          ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm" : "bg-transparent shadow-none"}
+          ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20" : "bg-transparent shadow-none"}
         `}
       >
         <a href="#home">
           <Image
-            src={assets.logo}
+            src={isDarkMode ? assets.logo_dark : assets.logo}
             alt="Logo"
             className="w-28 cursor-pointer mr-14 transition-all duration-500 ease-in-out"
           />
@@ -51,9 +51,9 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
         <ul
           className={`
             hidden md:flex items-center gap-6 lg:gap-8 rounded-full
-            bg-white bg-opacity-50 shadow-sm
+            bg-white bg-opacity-50 dark:bg-transparent
             transition-all duration-500 ease-in-out
-            ${isScroll ? "px-12 py-3" : "px-6 py-2"}
+            ${isScroll ? "px-12 py-3" : "px-6 py-2 shadow-sm dark:border dark:border-white/50"}
           `}
           style={{
             width: isScroll ? 'auto' : 'fit-content',
@@ -77,27 +77,27 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
 
           <a
             href="#contact"
-            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 transition duration-300 hover:bg-black hover:text-white"
+            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border border-gray-500 rounded-full ml-4 transition duration-300 hover:bg-black hover:text-white dark:border-white/50"
           >
             Contact
-            <Image src={assets.arrow_icon} alt="Arrow Icon" className="w-3" />
+            <Image src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon} alt="Arrow Icon" className="w-3" />
           </a>
 
           <button
             onClick={openMenu}
             className="block md:hidden ml-3 cursor-pointer"
           >
-            <Image src={assets.menu_black} alt="" className="w-6" />
+            <Image src={isDarkMode ? assets.menu_white : assets.menu_black} alt="" className="w-6" />
           </button>
         </div>
 
         {/* -------Mobile Menu------- */}
         <ul
           ref={sideMenuRef}
-          className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500"
+          className="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 dark:bg-darkHover dark:text-white"
         >
           <div onClick={closeMenu} className="absolute right-6 top-6">
-            <Image src={assets.close_black} alt="" className="w-5 cursor-pointer" />
+            <Image src={isDarkMode ? assets.close_white : assets.close_black} alt="" className="w-5 cursor-pointer" />
           </div>
           <li><a href="#home" className={navLinkClass} onClick={closeMenu}>Home</a></li>
           <li><a href="#about" className={navLinkClass} onClick={closeMenu}>About</a></li>
