@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <>
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <main className="pt-4 sm:pt-16">
+      <main className="sm:pt-16">
         <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         <About isDarkMode={isDarkMode} />
         <Services isDarkMode={isDarkMode} />
