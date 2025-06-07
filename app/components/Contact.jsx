@@ -12,7 +12,8 @@ const Contact = ({ isDarkMode }) => {
     setIsSubmitting(true);
     setResult("");
     const formData = new FormData(event.target);
-    formData.append("access_key", process.env.NEXT_PUBLIC_WEB3_ACCESS_KEY);
+    formData.append("access_key", process.env.process.env.NEXT_PUBLIC_CONTACT_FORM_ACCESS_KEY
+);
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
