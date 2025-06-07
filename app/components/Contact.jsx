@@ -1,8 +1,9 @@
 import { assets } from "@/assets/assets";
 import Image from "next/image";
 import React, { useState } from "react";
+import { motion } from "motion/react";
 
-const Contact = ({isDarkMode}) => {
+const Contact = ({ isDarkMode }) => {
   const [result, setResult] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -35,52 +36,91 @@ const Contact = ({isDarkMode}) => {
   };
 
   return (
-    <div
+    <motion.div
       id="contact"
       className="w-full px-[12%] py-10 scroll-mt-20 bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-[length: 90%_auto] dark:bg-none"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
     >
-      <h4 className="text-center mb-2 text-lg font-ovo">Connect with me</h4>
-      <h2 className="text-center text-5xl font-ovo">Get in touch</h2>
+      <motion.h4
+        className="text-center mb-2 text-lg font-ovo"
+        initial={{ y: -20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        Connect with me
+      </motion.h4>
+      <motion.h2
+        className="text-center text-5xl font-ovo"
+        initial={{ y: -20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        Get in touch
+      </motion.h2>
 
-      <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo">
+      <motion.p
+        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+      >
         I'd love to hear form you! If you have any questions, comments, or
         feedback, please use the form below.
-      </p>
+      </motion.p>
 
-      <form onSubmit={onSubmit} className="max-w-2xl mx-auto">
+      <motion.form
+        onSubmit={onSubmit}
+        className="max-w-2xl mx-auto"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.9 }}
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 mb-8">
-          <input
+          <motion.input
             type="text"
             placeholder="Enter your name"
             required
             className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/30 dark:border-white/90"
             name="name"
+            initial={{ x: -50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
           />
-          <input
+          <motion.input
             type="email"
             placeholder="Enter your email"
             required
             className="flex-1 p-3 outline-none border-[0.5px] border-gray-400 rounded-md bg-white dark:bg-darkHover/30 dark:border-white/90"
             name="email"
+            initial={{ x: 50, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 1.1 }}
           />
         </div>
-        <textarea
+        <motion.textarea
           rows="6"
           placeholder="Enter your message"
           required
           className="w-full p-4 outline-none border-[0.5px] border-gray-400 rounded-md bg-white mb-6 dark:bg-darkHover/30 dark:border-white/90"
           name="message"
-        ></textarea>
-        <button
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.3 }}
+        ></motion.textarea>
+        <motion.button
           type="submit"
           className="py-3 px-8 w-max flex items-center justify-center gap-2 bg-black/80 text-white rounded-full mx-auto hover:bg-black duration-500 min-w-[150px] cursor-pointer dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover"
           disabled={isSubmitting}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.3 }}
         >
           {isSubmitting ? "Sending..." : "Submit now"}
           {!isSubmitting && (
             <Image src={assets.right_arrow_white} alt="" className="w-4" />
           )}
-        </button>
+        </motion.button>
 
         <div
           className={`mt-4 h-6 text-center transition-opacity duration-300 font-medium ${
@@ -89,8 +129,8 @@ const Contact = ({isDarkMode}) => {
         >
           {result || "\u00A0" /* Non-breaking space keeps the height */}
         </div>
-      </form>
-    </div>
+      </motion.form>
+    </motion.div>
   );
 };
 
