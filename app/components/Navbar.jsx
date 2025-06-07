@@ -14,9 +14,11 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setIsScroll(scrollY > 50);
-    });
+    const onScroll = () => {
+      setIsScroll(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const navLinkClass = `
@@ -33,19 +35,30 @@ const Navbar = () => {
       </div>
 
       <nav
-        className={`w-full fixed top-0 left-0 h-16 px-5 lg:px-8 xl:px-[8%] flex items-center justify-between z-50 ${
-          isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm" : ""
-        }`}
+        className={`w-full fixed top-0 left-0 h-16 px-5 lg:px-8 xl:px-[8%] flex items-center justify-between z-50
+          transition-colors duration-500 ease-in-out
+          ${isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-sm" : "bg-transparent shadow-none"}
+        `}
       >
         <a href="#home">
           <Image
             src={assets.logo}
             alt="Logo"
-            className="w-28 cursor-pointer mr-14"
+            className="w-28 cursor-pointer mr-14 transition-all duration-500 ease-in-out"
           />
         </a>
 
-        <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 ${isScroll ? "" : "bg-white shadow-sm bg-opacity-50"}`}>
+        <ul
+          className={`
+            hidden md:flex items-center gap-6 lg:gap-8 rounded-full
+            bg-white bg-opacity-50 shadow-sm
+            transition-all duration-500 ease-in-out
+            ${isScroll ? "px-12 py-3" : "px-6 py-2"}
+          `}
+          style={{
+            width: isScroll ? 'auto' : 'fit-content',
+          }}
+        >
           <li><a href="#home" className={navLinkClass}>Home</a></li>
           <li><a href="#about" className={navLinkClass}>About</a></li>
           <li><a href="#services" className={navLinkClass}>Services</a></li>
