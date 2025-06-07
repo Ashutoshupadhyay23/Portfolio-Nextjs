@@ -33,7 +33,7 @@ export default function Home() {
         <Services />
         <Work />
         <Contact />
-        <Footer />+{" "}
+        <Footer />{" "}
       </main>
 
       <button
